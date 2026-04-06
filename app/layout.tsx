@@ -15,8 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "BookConnect",
   description: "Share, discover, write",
+  icons: {
+    icon: "/icon.png",
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
