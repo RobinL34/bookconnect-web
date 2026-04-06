@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function VerifyEmail() {
+function VerifyEmailContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
@@ -27,4 +27,12 @@ export default function VerifyEmail() {
   if (status === "loading") return <p>Vérification en cours...</p>;
   if (status === "success") return <p>Email vérifié avec succès ✅</p>;
   return <p>Lien invalide ou expiré ❌</p>;
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={<p>Chargement...</p>}>
+      <VerifyEmailContent />
+    </Suspense>
+  );
 }
